@@ -1,5 +1,5 @@
 #include "MyScene.h"
-#include "Objects/Bedroom/Room/Walls.h"
+#include "Objects/Bedroom/Room/Room.h"
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
 {
@@ -9,8 +9,8 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	Walls *testWall = new Walls();
-	AddObjectToScene(testWall);
+	Room *testRoom = new Room(70.f, 100.f, 50.f);
+	AddObjectToScene(testRoom);
 	
 }
 
