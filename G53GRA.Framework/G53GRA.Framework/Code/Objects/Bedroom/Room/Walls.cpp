@@ -5,8 +5,8 @@ Walls::Walls(){}
 void Walls::Display() 
 {
 	float length = 100.f;
-	float width = 50.f;
-	float height = 20.f;
+	float width = 70.f;
+	float height = 30.f;
 	float doorWidth = width * 0.25;
 	float doorHeight = height * 0.85;
 
@@ -36,6 +36,27 @@ void Walls::Display()
 	glVertex3f(-width, height, -length);
 	glVertex3f(-width, 0.f, -length);
 
+	//Left wall alcove
+	glNormal3d(1, 0, 0);
+	glColor3f(0.5f, 0.5f, 1.f);
+	glVertex3f(-width, 0.f, -length);
+	glVertex3f(-width, height, -length);
+	glVertex3f(-width, height, -length * 0.5f);
+	glVertex3f(-width, 0.f, -length * 0.5f);
+
+	//alcove
+	float alcoveWidth = -width + (doorWidth / 2.f);
+	glNormal3d(1, 1, 1);
+	glVertex3f(-width, 0.f, -length * 0.5f);
+	glVertex3f(-width, height, -length * 0.5f);
+	glVertex3f(alcoveWidth, height, -length * 0.5f);
+	glVertex3f(alcoveWidth, 0.f, -length * 0.5f);
+	//left wall
+	glNormal3d(1, 0, 0);
+	glVertex3f(alcoveWidth, 0.f, -length * 0.5f);
+	glVertex3f(alcoveWidth, height, -length * 0.5f);
+	glVertex3f(alcoveWidth, height, 0.0f);
+	glVertex3f(alcoveWidth, 0.0f, 0.0f);
 	glEnd();
 
 
