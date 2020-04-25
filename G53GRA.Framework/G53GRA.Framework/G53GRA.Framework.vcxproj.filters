@@ -68,5 +68,8 @@
     <ClInclude Include="Code\Objects\Bedroom\Room\Walls.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Objects\Bedroom\Room\RoomFloor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
