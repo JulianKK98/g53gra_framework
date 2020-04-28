@@ -14,4 +14,5 @@ private:
 	void makeWalls();
 	void makeFloorNCeiling();
 	void makeWindowSill(float thickness, float heightMod);
+	void makePillar(float pillarWidth);
 };

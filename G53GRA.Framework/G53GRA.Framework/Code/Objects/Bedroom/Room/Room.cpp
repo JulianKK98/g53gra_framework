@@ -9,6 +9,7 @@ void Room::Display() {
 	makeWalls();
 	makeFloorNCeiling();
 	makeWindowSill(0.05f, 0.3f);
+	makePillar(6.f);
 }
 
 
@@ -102,8 +103,31 @@ void Room::makeWindowSill(float thicknessMod, float heightMod)
 	glEnd();
 }
 
-void makePillar() 
+void Room::makePillar(float pillarWidth) 
 {
-	//Make pillar
+	float pillarXPos = -0.5* width;
+	float pillarLeft = pillarXPos + (pillarWidth /2.f);
+	float pillarRight = pillarXPos - (pillarWidth / 2.f);
+
+	glBegin(GL_QUADS);
+	//right side
+	glNormal3d(-1, 0, 0);
+	glVertex3f(pillarLeft, 0.f, 0.f);
+	glVertex3f(pillarLeft, 0.f, -pillarWidth);
+	glVertex3f(pillarLeft, height, -pillarWidth);
+	glVertex3f(pillarLeft, height, 0.f);
+	//back
+	glNormal3d(1, 1, 1);
+	glVertex3f(pillarLeft, 0.f, -pillarWidth);
+	glVertex3f(pillarRight, 0.f, -pillarWidth);
+	glVertex3f(pillarRight, height, -pillarWidth);
+	glVertex3f(pillarLeft, height, -pillarWidth);
+	//left side
+	glNormal3d(1, 0, 0);
+	glVertex3f(pillarRight, height, 0.f);
+	glVertex3f(pillarRight, height, -pillarWidth);
+	glVertex3f(pillarRight, 0.f, -pillarWidth);
+	glVertex3f(pillarRight, 0.f, 0.f);
+	glEnd();
 }
 
