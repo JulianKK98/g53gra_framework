@@ -1,15 +1,23 @@
 #include "Room.h"
 
+
+Room:: ~Room()
+{
+	delete[] windows;
+}
+
 void Room::Display() {
 	glTranslatef(pos[0], pos[1], pos[2]);
 	glScalef(scale[0], scale[1], scale[2]);
+	glRotatef(rotation[0], 1.f, 0.f, 0.f); //x
 	glRotatef(rotation[1], 0.f, 1.f, 0.f); //y
 	glRotatef(rotation[2], 0.f, 0.f, 1.f); //z
-	glRotatef(rotation[0], 1.f, 0.f, 0.f); //x
 	makeWalls();
 	makeFloorNCeiling();
+	pillarWidth = 0.3f * width;
 	makeWindowSill(0.05f, 0.3f);
-	makePillar(6.f);
+	makeWindows();
+	
 }
 
 
@@ -81,29 +89,31 @@ void Room::makeFloorNCeiling()
 	glEnd();
 }
 
+
 void Room::makeWindowSill(float thicknessMod, float heightMod)
 {
-	float windowSillH = height * heightMod;
-	float windowSillZ = thicknessMod * -length;
+	windowSillHeight = height * heightMod;
+	float windowSillZ = thicknessMod * - length;
+	
 	//windowsill wall
 	glBegin(GL_QUADS);
 	glNormal3d(1, 1, 1);
 	glColor3f(1.f, 1.f, 1.f);
 	glVertex3f(0.f, 0.f, windowSillZ);
 	glVertex3f(-width, 0.f, windowSillZ);
-	glVertex3f(-width, windowSillH, windowSillZ);
-	glVertex3f(0.f, windowSillH, windowSillZ);
+	glVertex3f(-width, windowSillHeight, windowSillZ);
+	glVertex3f(0.f, windowSillHeight, windowSillZ);
 	
 	//windowSill
 	glNormal3d(0, 0, 1);
-	glVertex3f(0.f, windowSillH, 0.f);
-	glVertex3f(0.f, windowSillH, windowSillZ);
-	glVertex3f(-width, windowSillH, windowSillZ);
-	glVertex3f(-width, windowSillH, 0.f);
+	glVertex3f(0.f, windowSillHeight, 0.f);
+	glVertex3f(0.f, windowSillHeight, windowSillZ);
+	glVertex3f(-width, windowSillHeight, windowSillZ);
+	glVertex3f(-width, windowSillHeight, 0.f);
 	glEnd();
 }
 
-void Room::makePillar(float pillarWidth) 
+void Room::makePillar() 
 {
 	float pillarXPos = -0.5* width;
 	float pillarLeft = pillarXPos + (pillarWidth /2.f);
@@ -129,5 +139,18 @@ void Room::makePillar(float pillarWidth)
 	glVertex3f(pillarRight, 0.f, -pillarWidth);
 	glVertex3f(pillarRight, 0.f, 0.f);
 	glEnd();
+}
+
+void Room::makeWindows() 
+{
+	Window window1;
+	Window window2;
+	Window window3;
+
+	glPushMatrix();
+
+	//work on making the windows
+
+	glPopMatrix();
 }
 
