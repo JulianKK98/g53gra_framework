@@ -3,7 +3,7 @@
 
 Room:: ~Room()
 {
-	delete[] windows;
+	delete[] windows
 }
 
 void Room::Display() {
@@ -14,9 +14,10 @@ void Room::Display() {
 	glRotatef(rotation[2], 0.f, 0.f, 1.f); //z
 	makeWalls();
 	makeFloorNCeiling();
-	pillarWidth = 0.3f * width;
+	pillarWidth = 0.15f * width;
+	makePillar();
 	makeWindowSill(0.05f, 0.3f);
-	makeWindows();
+	makeWindows(15.f, 50.f - windowSillHeight, 2.f);
 	
 }
 
@@ -24,7 +25,7 @@ void Room::Display() {
 void Room::makeWalls() {
 	float doorWidth = width * 0.25;
 	float doorHeight = height * 0.80;
-	alcoveWidth = -width + (doorWidth / 2.f);
+	alcoveWidth = width - (doorWidth / 2.f);
 	//Draw right wall
 	glBegin(GL_QUADS);
 	glNormal3d(-1, 0, 0);
@@ -57,14 +58,14 @@ void Room::makeWalls() {
 	glNormal3d(1, 1, 1);
 	glVertex3f(-width, 0.f, -length * 0.5f);
 	glVertex3f(-width, height, -length * 0.5f);
-	glVertex3f(alcoveWidth, height, -length * 0.5f);
-	glVertex3f(alcoveWidth, 0.f, -length * 0.5f);
+	glVertex3f(-alcoveWidth, height, -length * 0.5f);
+	glVertex3f(-alcoveWidth, 0.f, -length * 0.5f);
 	//left wall
 	glNormal3d(1, 0, 0);
-	glVertex3f(alcoveWidth, 0.f, -length * 0.5f);
-	glVertex3f(alcoveWidth, height, -length * 0.5f);
-	glVertex3f(alcoveWidth, height, 0.0f);
-	glVertex3f(alcoveWidth, 0.0f, 0.0f);
+	glVertex3f(-alcoveWidth, 0.f, -length * 0.5f);
+	glVertex3f(-alcoveWidth, height, -length * 0.5f);
+	glVertex3f(-alcoveWidth, height, 0.0f);
+	glVertex3f(-alcoveWidth, 0.0f, 0.0f);
 	glEnd();
 }
 
@@ -141,16 +142,38 @@ void Room::makePillar()
 	glEnd();
 }
 
-void Room::makeWindows() 
+void Room::makeWindows(float width, float height, float thickness)
 {
-	Window window1;
-	Window window2;
-	Window window3;
+	Window *window1 = new Window(width, height, thickness);
+	Window *window2 = new Window(width, height, thickness);
+
+
+	float win3Width = (2.f * width) - (Room::width - alcoveWidth);
+
+	Window *window3 = new Window(win3Width, height, thickness);
+	
+	windows[0] = *window1;
+	windows[2] = *window2;
+	windows[3] = *window3;
+
+	//window 1;
+	glPushMatrix();
+	glTranslatef(0.f, windowSillHeight, 0.f);
+	glRotatef(180.f, 0.f, 1.f, 0.f);
+	window1->Display();
+	glPopMatrix();
+	
+	glPushMatrix();
+	glTranslatef(0.f - width, windowSillHeight, 0.f);
+	glRotatef(180.f, 0.f, 1.f, 0.f);
+	window2->Display();
+	glPopMatrix();
 
 	glPushMatrix();
-
-	//work on making the windows
-
+	glTranslatef(0.f - (2 * width) - pillarWidth, windowSillHeight, 0.f);
+	glRotatef(180.f, 0.f, 1.f, 0.f);
+	window3->Display();
 	glPopMatrix();
+
 }
 
