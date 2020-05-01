@@ -1,9 +1,9 @@
 #include "Room.h"
-
+#include <iostream>
 
 Room:: ~Room()
 {
-	delete[] windows
+	delete[] windows;
 }
 
 void Room::Display() {
@@ -151,26 +151,26 @@ void Room::makeWindows(float width, float height, float thickness)
 	float win3Width = (2.f * width) - (Room::width - alcoveWidth);
 
 	Window *window3 = new Window(win3Width, height, thickness);
-	
+	float windowHeight = windowSillHeight;
 	windows[0] = *window1;
 	windows[2] = *window2;
 	windows[3] = *window3;
 
 	//window 1;
 	glPushMatrix();
-	glTranslatef(0.f, windowSillHeight, 0.f);
+	glTranslatef(0.f, windowHeight, 0.f);
 	glRotatef(180.f, 0.f, 1.f, 0.f);
 	window1->Display();
 	glPopMatrix();
 	
 	glPushMatrix();
-	glTranslatef(0.f - width, windowSillHeight, 0.f);
+	glTranslatef(0.f - width, windowHeight, 0.f);
 	glRotatef(180.f, 0.f, 1.f, 0.f);
 	window2->Display();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(0.f - (2 * width) - pillarWidth, windowSillHeight, 0.f);
+	glTranslatef(0.f - (2 * width) - pillarWidth, windowHeight, 0.f);
 	glRotatef(180.f, 0.f, 1.f, 0.f);
 	window3->Display();
 	glPopMatrix();
