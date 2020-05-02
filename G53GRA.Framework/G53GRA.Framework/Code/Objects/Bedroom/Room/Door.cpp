@@ -65,7 +65,7 @@ void Door::makeDoorKnob() {
 	glColor3f(0.f, 0.f, 1.f);
 	glTranslatef(doorKnobX, doorKnobY, 2.f * thickness);
 	glRotatef(90.f, 1.f, 0.f, 0.f);
-	cylinder(2.f, 1.f);
+	cylinder(2.f, 5.f);
 	glPopMatrix();
 }
 
@@ -78,38 +78,37 @@ void Door::cylinder(float h, float r)
 	float x = r, z = 0.f;           // initialise x and z on right of cylinder centre
 	float t = 0.f;                  // initialise angle as 0
 
-	do
-	{
-		glBegin(GL_QUADS);          // new QUAD
-			// Create first points
-		glVertex3f(x, h, z);    // top
-		glVertex3f(x, 0.f, z);  // bottom
-		// Iterate around circle
-		t -= res;               // add increment to angle
-		x = r * cos(t);           // move x and z around circle
-		z = r * sin(t);
-		// Close quad
-		glVertex3f(x, 0.f, z);  // bottom
-		glVertex3f(x, h, z);    // top
-		glEnd();                    // end shape
-	} while (t >= 2 * -M_PI);        // for a full circle (360 degrees)
-
 	//make front face 
 	glBegin(GL_TRIANGLE_FAN);
 	glVertex3f(r / 2.f, 0.f, r / 2.f); //centre point
-	do 
+	do
 	{
 		glVertex3f(x, 0.f, z);
 		// Iterate around circle
 		t -= res;               // add increment to angle
 		x = r * cos(t);           // move x and z around circle
 		z = r * sin(t);
-		
-		glVertex3f(x, 0.f, z);  // bottom
-		
-	} 
-	while (t >= 2 * -M_PI);
+
+		//glVertex3f(x, 0, z);  // bottom
+
+	} while (t >= 2 * -M_PI);
 	glEnd();
 
+	t = 0.f;                  // initialise angle as 0
+	do
+	{
+		glBegin(GL_QUADS);          // new QUAD
+			// Create first points
+		glVertex3f(x, 0.f, z);    // top
+		glVertex3f(x, -h, z);  // bottom
+		// Iterate around circle
+		t -= res;               // add increment to angle
+		x = r * cos(t);           // move x and z around circle
+		z = r * sin(t);
+		// Close quad
+		glVertex3f(x, -h, z);  // bottom
+		glVertex3f(x, 0.f, z);    // top
+		glEnd();                    // end shape
+	} while (t >= 2 * -M_PI);        // for a full circle (360 degrees)
 
 }
