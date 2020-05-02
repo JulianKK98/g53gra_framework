@@ -19,6 +19,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\MyScene.h" />
+    <ClInclude Include="Code\Objects\Bedroom\Room\Door.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Room.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Window.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />

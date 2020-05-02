@@ -77,5 +77,8 @@
     <ClInclude Include="Code\Objects\Bedroom\Room\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Objects\Bedroom\Room\Door.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
