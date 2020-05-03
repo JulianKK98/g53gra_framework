@@ -17,14 +17,15 @@ void Room::Display() {
 	pillarWidth = 0.15f * width;
 	makePillar();
 	makeWindowSill(0.05f, 0.3f);
+	makeDoor();
 	makeWindows(15.f, 50.f - windowSillHeight, 2.f);
 	
 }
 
 
 void Room::makeWalls() {
-	float doorWidth = width * 0.25;
-	float doorHeight = height * 0.80;
+	doorWidth = width * 0.25;
+	doorHeight = height * 0.80;
 	alcoveWidth = width - (doorWidth / 2.f);
 	//Draw right wall
 	glBegin(GL_QUADS);
@@ -175,5 +176,15 @@ void Room::makeWindows(float width, float height, float thickness)
 	window3->Display();
 	glPopMatrix();
 
+}
+
+void Room::makeDoor() 
+{
+
+	glPushMatrix();
+	glTranslatef(-doorWidth, 0.f, -length);
+	Door *door = new Door(doorWidth , doorHeight, 2.f);
+	door->Display();
+	glPopMatrix();
 }
 

@@ -1,5 +1,6 @@
 #include <DisplayableObject.h>
 #include "Window.h"
+#include "Door.h"
 
 class Room :
 	public DisplayableObject
@@ -16,9 +17,11 @@ private:
 	float pillarWidth;
 	float windowSillHeight;
 	float alcoveWidth;
+	float doorWidth, doorHeight;
 	void makeWalls();
 	void makeFloorNCeiling();
 	void makeWindowSill(float thicknessMod, float heightMod);
 	void makeWindows(float width, float height, float thickness);
 	void makePillar();
+	void makeDoor();
 };
