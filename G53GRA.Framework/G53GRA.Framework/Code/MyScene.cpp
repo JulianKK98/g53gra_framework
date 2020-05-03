@@ -11,7 +11,7 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	Room *testRoom = new Room(70.f, 100.f, 50.f);
+	Room *testRoom = new Room(280.f, 400.f, 200.f);
 	AddObjectToScene(testRoom);
 	
 }

@@ -19,5 +19,10 @@ private:
 	float hingeLocation;
 	float maxRotationAngle;
 	void makeDoor();
-	void makeDoorKnob();
+	void makeDoorKnob(
+		float baseThickness,
+		float baseRadius,
+		float handleThickness,
+		float cylinderHandleRadius
+	);
 };

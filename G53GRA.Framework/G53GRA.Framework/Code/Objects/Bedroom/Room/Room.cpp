@@ -1,5 +1,4 @@
 #include "Room.h"
-#include <iostream>
 
 Room:: ~Room()
 {
@@ -18,7 +17,8 @@ void Room::Display() {
 	makePillar();
 	makeWindowSill(0.05f, 0.3f);
 	makeDoor();
-	makeWindows(15.f, 50.f - windowSillHeight, 2.f);
+	float winWidth = ((width * 0.5f) - (pillarWidth / 2.f)) / 2.f;
+	makeWindows(winWidth , height - windowSillHeight, 2.f);
 	
 }
 
@@ -52,19 +52,19 @@ void Room::makeWalls() {
 	glColor3f(0.5f, 0.5f, 1.f);
 	glVertex3f(-width, 0.f, -length);
 	glVertex3f(-width, height, -length);
-	glVertex3f(-width, height, -length * 0.5f);
-	glVertex3f(-width, 0.f, -length * 0.5f);
+	glVertex3f(-width, height, -length * 0.4f);
+	glVertex3f(-width, 0.f, -length * 0.4f);
 
 	//alcove
 	glNormal3d(1, 1, 1);
-	glVertex3f(-width, 0.f, -length * 0.5f);
-	glVertex3f(-width, height, -length * 0.5f);
-	glVertex3f(-alcoveWidth, height, -length * 0.5f);
-	glVertex3f(-alcoveWidth, 0.f, -length * 0.5f);
+	glVertex3f(-width, 0.f, -length * 0.4f);
+	glVertex3f(-width, height, -length * 0.4f);
+	glVertex3f(-alcoveWidth, height, -length * 0.4f);
+	glVertex3f(-alcoveWidth, 0.f, -length * 0.4f);
 	//left wall
 	glNormal3d(1, 0, 0);
-	glVertex3f(-alcoveWidth, 0.f, -length * 0.5f);
-	glVertex3f(-alcoveWidth, height, -length * 0.5f);
+	glVertex3f(-alcoveWidth, 0.f, -length * 0.4f);
+	glVertex3f(-alcoveWidth, height, -length * 0.4f);
 	glVertex3f(-alcoveWidth, height, 0.0f);
 	glVertex3f(-alcoveWidth, 0.0f, 0.0f);
 	glEnd();
@@ -171,7 +171,7 @@ void Room::makeWindows(float width, float height, float thickness)
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(0.f - (2 * width) - pillarWidth, windowHeight, 0.f);
+	glTranslatef((-2 * width) - pillarWidth, windowHeight, 0.f);
 	glRotatef(180.f, 0.f, 1.f, 0.f);
 	window3->Display();
 	glPopMatrix();

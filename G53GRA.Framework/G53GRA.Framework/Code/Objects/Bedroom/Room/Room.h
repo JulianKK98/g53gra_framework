@@ -1,6 +1,7 @@
 #include <DisplayableObject.h>
 #include "Window.h"
 #include "Door.h"
+#include "Texture.h"
 
 class Room :
 	public DisplayableObject
