@@ -12,6 +12,7 @@
     <ClCompile Include="Code\Objects\Bedroom\Room\Door.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Room.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Window.cpp" />
+    <ClCompile Include="Code\Objects\SimpleShapes\SimpleShapes.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
     <ClCompile Include="Framework\Utility\Camera.cpp" />
@@ -22,6 +23,7 @@
     <ClInclude Include="Code\Objects\Bedroom\Room\Door.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Room.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Window.h" />
+    <ClInclude Include="Code\Objects\SimpleShapes\SimpleShapes.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
     <ClInclude Include="Framework\Engine\Scene.h" />
     <ClInclude Include="Framework\Interface\Animation.h" />

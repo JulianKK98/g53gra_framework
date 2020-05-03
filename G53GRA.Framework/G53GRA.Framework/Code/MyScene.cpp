@@ -13,7 +13,7 @@ void MyScene::Initialise()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//Room *testRoom = new Room(70.f, 100.f, 50.f);
 	//AddObjectToScene(testRoom);
-	Door * testDoor = new Door(20.f, 50.f, 5.f);
+	Door * testDoor = new Door(20.f, 50.f, 10.f);
 	AddObjectToScene(testDoor);
 
 	
