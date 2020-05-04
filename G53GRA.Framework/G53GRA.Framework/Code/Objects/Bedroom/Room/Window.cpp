@@ -25,7 +25,7 @@ void Window::makeWindow()
 void Window::makeFrame()
 {
 	glBegin(GL_QUADS);
-	glColor3f(0.f, 0.93f, 0.93f);
+	glColor3f(0.16f, 0.368f, 0.29f);
 
 	glVertex3f(0.f, 0.f, 0.f);
 	glVertex3f(frameThickness, 0.f, 0.f);

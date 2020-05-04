@@ -5,83 +5,111 @@ Room:: ~Room()
 	delete[] windows;
 }
 
+std::string floorTexPath = "Textures/floor.bmp";
+std::string wallTexPath = "Textures/straw.bmp";
+
+Room::Room(float w, float l, float h) :
+	width(w), length(l), height(h)
+{
+	floorTex = Scene::GetTexture(floorTexPath);
+	wallTex = Scene::GetTexture(wallTexPath);
+}
+
+
+
 void Room::Display() {
 	glTranslatef(pos[0], pos[1], pos[2]);
 	glScalef(scale[0], scale[1], scale[2]);
 	glRotatef(rotation[0], 1.f, 0.f, 0.f); //x
 	glRotatef(rotation[1], 0.f, 1.f, 0.f); //y
 	glRotatef(rotation[2], 0.f, 0.f, 1.f); //z
-	makeWalls();
 	makeFloorNCeiling();
+	makeWalls();
 	pillarWidth = 0.15f * width;
 	makePillar();
 	makeWindowSill(0.05f, 0.3f);
 	makeDoor();
 	float winWidth = ((width * 0.5f) - (pillarWidth / 2.f)) / 2.f;
-	makeWindows(winWidth , height - windowSillHeight, 2.f);
+	makeWindows(winWidth , height - windowSillHeight, 5.f);
 	
 }
 
 
 void Room::makeWalls() {
-	doorWidth = width * 0.25;
-	doorHeight = height * 0.80;
+	doorWidth = width * 0.25f;
+	doorHeight = height * 0.80f;
 	alcoveWidth = width - (doorWidth / 2.f);
 	//Draw right wall
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, wallTex);
 	glBegin(GL_QUADS);
 	glNormal3d(-1, 0, 0);
 	glColor3f(1.f, 1.f, 1.f);
-	glVertex3f(0.f, 0.f, 0.f);
-	glVertex3f(0.f, height, 0.f);
-	glVertex3f(0.f, height, -length);
-	glVertex3f(0.f, 0.f, -length);
+	glTexCoord2f(0, 0); glVertex3f(0.f, 0.f, 0.f);
+	glTexCoord2f(1, 0); glVertex3f(0.f, height, 0.f);
+	glTexCoord2f(1, 1); glVertex3f(0.f, height, -length);
+	glTexCoord2f(0, 1); glVertex3f(0.f, 0.f, -length);
+	
+	
 	//Above door
 	glNormal3d(0, 0, 0);
-	glVertex3f(0.f, doorHeight, -length);
-	glVertex3f(0.f, height, -length);
-	glVertex3f(-doorWidth, height, -length);
-	glVertex3f(-doorWidth, doorHeight, -length);
+	glTexCoord2f(0, 0); glVertex3f(0.f, doorHeight, -length);
+	glTexCoord2f(3, 0); glVertex3f(0.f, height, -length);
+	glTexCoord2f(3, 3); glVertex3f(-doorWidth, height, -length);
+	glTexCoord2f(0, 3); glVertex3f(-doorWidth, doorHeight, -length);
 	//wall next to door
-	glVertex3f(-doorWidth, 0.f, -length);
-	glVertex3f(-doorWidth, height, -length);
-	glVertex3f(-width, height, -length);
-	glVertex3f(-width, 0.f, -length);
+	glTexCoord2f(0, 0); glTexCoord2f(0, 0); glVertex3f(-doorWidth, 0.f, -length);
+	glTexCoord2f(1, 0); glVertex3f(-doorWidth, height, -length);
+	glTexCoord2f(1, 1); glVertex3f(-width, height, -length);
+	glTexCoord2f(0, 1); glVertex3f(-width, 0.f, -length);
 
 	//Left wall alcove
 	glNormal3d(1, 0, 0);
-	glColor3f(0.5f, 0.5f, 1.f);
-	glVertex3f(-width, 0.f, -length);
-	glVertex3f(-width, height, -length);
-	glVertex3f(-width, height, -length * 0.4f);
-	glVertex3f(-width, 0.f, -length * 0.4f);
+	glColor3f(0.396f, 0.58f, 0.56f);
+	glTexCoord2f(0, 0); glVertex3f(-width, 0.f, -length);
+	glTexCoord2f(1, 0); glVertex3f(-width, height, -length);
+	glTexCoord2f(1, 1); glVertex3f(-width, height, -length * 0.4f);
+	glTexCoord2f(0, 1); glVertex3f(-width, 0.f, -length * 0.4f);
 
 	//alcove
 	glNormal3d(1, 1, 1);
-	glVertex3f(-width, 0.f, -length * 0.4f);
-	glVertex3f(-width, height, -length * 0.4f);
-	glVertex3f(-alcoveWidth, height, -length * 0.4f);
-	glVertex3f(-alcoveWidth, 0.f, -length * 0.4f);
+	glTexCoord2f(0, 0); glVertex3f(-width, 0.f, -length * 0.4f);
+	glTexCoord2f(1, 0); glVertex3f(-width, height, -length * 0.4f);
+	glTexCoord2f(1, 1); glVertex3f(-alcoveWidth, height, -length * 0.4f);
+	glTexCoord2f(0, 1); glVertex3f(-alcoveWidth, 0.f, -length * 0.4f);
 	//left wall
 	glNormal3d(1, 0, 0);
-	glVertex3f(-alcoveWidth, 0.f, -length * 0.4f);
-	glVertex3f(-alcoveWidth, height, -length * 0.4f);
-	glVertex3f(-alcoveWidth, height, 0.0f);
-	glVertex3f(-alcoveWidth, 0.0f, 0.0f);
+	glTexCoord2f(0, 0); glVertex3f(-alcoveWidth, 0.f, -length * 0.4f);
+	glTexCoord2f(1, 0); glVertex3f(-alcoveWidth, height, -length * 0.4f);
+	glTexCoord2f(1, 1); glVertex3f(-alcoveWidth, height, 0.0f);
+	glTexCoord2f(0, 1); glVertex3f(-alcoveWidth, 0.0f, 0.0f);
 	glEnd();
+	glDisable(GL_TEXTURE_2D);
+	
 }
+
+
 
 void Room::makeFloorNCeiling() 
 {
+	
 	//floor
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, floorTex);
 	glBegin(GL_QUADS);
 	glNormal3d(0, 1, 0);
-	glColor3f(0.65f, 0.16f, 0.16f);
-	glVertex3f(0.f, 0.f, 0.f);
-	glVertex3f(0.f, 0.f, -length);
-	glVertex3f(-width, 0.f, -length);
-	glVertex3f(-width, 0.f, 0.f);
+	glColor3f(1.f, 1.f, 1.f);
+	glTexCoord2d(0, 0);	glVertex3f(0.f, 0.f, 0.f);
+	glTexCoord2d(1, 0); glVertex3f(0.f, 0.f, -length);
+	glTexCoord2d(1, 1); glVertex3f(-width, 0.f, -length);
+	glTexCoord2d(0, 1); glVertex3f(-width, 0.f, 0.f);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+	
 
 	//ceiling
+
+	glBegin(GL_QUADS);
 	glNormal3d(0, -1, 0);
 	glColor3f(1.f, 1.f, 1.f);
 	glVertex3f(-width, height, 0.f);
@@ -117,11 +145,12 @@ void Room::makeWindowSill(float thicknessMod, float heightMod)
 
 void Room::makePillar() 
 {
-	float pillarXPos = -0.5* width;
+	float pillarXPos = -0.5f* width;
 	float pillarLeft = pillarXPos + (pillarWidth /2.f);
 	float pillarRight = pillarXPos - (pillarWidth / 2.f);
 
 	glBegin(GL_QUADS);
+	glColor3f(1.f, 1.f, 1.f);
 	//right side
 	glNormal3d(-1, 0, 0);
 	glVertex3f(pillarLeft, 0.f, 0.f);
@@ -171,7 +200,7 @@ void Room::makeWindows(float width, float height, float thickness)
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef((-2 * width) - pillarWidth, windowHeight, 0.f);
+	glTranslatef((-2 * width) + pillarWidth, windowHeight, 0.f);
 	glRotatef(180.f, 0.f, 1.f, 0.f);
 	window3->Display();
 	glPopMatrix();

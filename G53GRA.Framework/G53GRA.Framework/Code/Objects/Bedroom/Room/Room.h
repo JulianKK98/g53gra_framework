@@ -7,14 +7,14 @@ class Room :
 	public DisplayableObject
 {
 	const float width, length, height;
-
+	
 public:
-	Room(float w, float l, float h):
-		width(w), length(l), height(h){}
+	Room(float w, float l, float h);
 	~Room();
 	void Display();
 private:
 	Window windows[3];
+	int floorTex, wallTex;
 	float pillarWidth;
 	float windowSillHeight;
 	float alcoveWidth;
