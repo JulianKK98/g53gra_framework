@@ -3,19 +3,17 @@
 Room:: ~Room()
 {
 	delete[] windows;
-	delete wallTex;
-	delete floorTex;
+
 }
 
 
-std::string wallTexPath = "Textures/wall - smaller.bmp";
-std::string floorTexPath = "Textures/floor.bmp";
+
 
 
 Room::Room(float w, float l, float h) :
 	width(w), length(l), height(h)
 {
-	
+
 }
 
 
@@ -26,8 +24,6 @@ void Room::Display() {
 	glRotatef(rotation[0], 1.f, 0.f, 0.f); //x
 	glRotatef(rotation[1], 0.f, 1.f, 0.f); //y
 	glRotatef(rotation[2], 0.f, 0.f, 1.f); //z
-	wallTex = new int(Scene::GetTexture(wallTexPath));
-	floorTex = new int(Scene::GetTexture(floorTexPath));
 	makeFloorNCeiling();
 	makeWalls();
 	pillarWidth = 0.15f * width;
@@ -41,14 +37,15 @@ void Room::Display() {
 
 
 void Room::makeWalls() {
-	
+	std::string wallTexPath = "Textures/wall - smaller.bmp";
+	wallTex = Scene::GetTexture(wallTexPath);
 	
 	doorWidth = width * 0.25f;
 	doorHeight = height * 0.80f;
 	alcoveWidth = width - (doorWidth / 2.f);
 	//Draw right wall
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, *wallTex);
+	glBindTexture(GL_TEXTURE_2D, wallTex);
 	glBegin(GL_QUADS);
 	glNormal3d(-1, 0, 0);
 	glColor3f(0.8f, 0.8f, 0.8f);
@@ -99,10 +96,11 @@ void Room::makeWalls() {
 
 void Room::makeFloorNCeiling() 
 {
-	
+	std::string floorTexPath = "Textures/floor.bmp";
+	floorTex = Scene::GetTexture(floorTexPath);
 	//floor
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, *floorTex);
+	glBindTexture(GL_TEXTURE_2D, floorTex);
 	glBegin(GL_QUADS);
 	glNormal3d(0, 1, 0);
 	glColor3f(1.f, 1.f, 1.f);
@@ -134,7 +132,7 @@ void Room::makeWindowSill(float thicknessMod, float heightMod)
 	
 	//windowsill wall
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, *wallTex);
+	glBindTexture(GL_TEXTURE_2D, wallTex);
 	glBegin(GL_QUADS);
 	glNormal3d(1, 1, 1);
 	glColor3f(1.f, 1.f, 1.f);
@@ -159,7 +157,7 @@ void Room::makePillar()
 	float pillarLeft = pillarXPos + (pillarWidth /2.f);
 	float pillarRight = pillarXPos - (pillarWidth / 2.f);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, *wallTex);
+	glBindTexture(GL_TEXTURE_2D, wallTex);
 	glBegin(GL_QUADS);
 	glColor3f(1.f, 1.f, 1.f);
 	//right side
