@@ -91,3 +91,31 @@ void SimpleShapes::makeCylinder(float h, float r, bool frontClosed, bool backClo
 		glPopMatrix();
 	}
 }
+
+void SimpleShapes::makeFunnel(float h, float r1, float r2) {
+	float res = 0.1*M_PI;           // resolution (in radians: equivalent to 18 degrees)
+	float x = r1, z = 0.f;           // initialise x and z on right of cylinder centre
+	float x2 = r2, z2 = 0.f;           // initialise x and z on right of cylinder centre
+	float t = 0.f;                  // initialise angle as 0
+
+	do
+	{
+		glBegin(GL_QUADS);          // new QUAD
+			// Create first points
+		glVertex3f(x, 0.f, z);    // top
+		glVertex3f(x2, -h, z2);  // bottom
+		t -= res;               // add increment to angle
+		x = r1 * cos(t);           // move x and z around circle
+		z = r1 * sin(t);
+
+		x2 = r2 * cos(t);
+		z2 = r2 * sin(t);
+		// Iterate around circle
+		// Close quad
+		glVertex3f(x2, -h, z2);  // bottom
+		glVertex3f(x, 0.f, z);    // top
+		glEnd();                    // end shape
+	} while (t >= 2 * -M_PI);        // for a full circle (360 degrees)
+
+
+}

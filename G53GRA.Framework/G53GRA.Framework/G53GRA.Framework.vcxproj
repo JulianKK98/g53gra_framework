@@ -10,7 +10,9 @@
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Door.cpp" />
+    <ClCompile Include="Code\Objects\Bedroom\Room\LampHead.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Room.cpp" />
+    <ClCompile Include="Code\Objects\Bedroom\Room\RoomLight.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Window.cpp" />
     <ClCompile Include="Code\Objects\SimpleShapes\SimpleShapes.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
@@ -21,7 +23,9 @@
   <ItemGroup>
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Door.h" />
+    <ClInclude Include="Code\Objects\Bedroom\Room\LampHead.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Room.h" />
+    <ClInclude Include="Code\Objects\Bedroom\Room\RoomLight.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Window.h" />
     <ClInclude Include="Code\Objects\SimpleShapes\SimpleShapes.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
