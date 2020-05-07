@@ -14,7 +14,7 @@ public:
 	void Display();
 private:
 	Window windows[3];
-	int floorTex, wallTex;
+	int *floorTex, *wallTex;
 	float pillarWidth;
 	float windowSillHeight;
 	float alcoveWidth;
