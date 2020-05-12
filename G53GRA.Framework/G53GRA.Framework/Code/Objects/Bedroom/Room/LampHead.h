@@ -16,7 +16,7 @@ public:
 	void Display();
 private:
 	float r1funnel, r2funnel , funnelLength; //for funnel
-	float rPivot, lPivot; //Not sure about name
+	float rPivot, lPivot; 
 	
 	SimpleShapes simpleShape;
 

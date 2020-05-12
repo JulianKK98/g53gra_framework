@@ -26,7 +26,7 @@ void MyScene::Initialise()
 	RoomLight * roomLight = new RoomLight();
 	AddObjectToScene(roomLight);*/
 
-	LampHead *lampHead = new LampHead();
+	LampHead *lampHead = new LampHead(5.f, 7.f, 10.f, 5.f, 3.f);
 	AddObjectToScene(lampHead);
 	
 	
