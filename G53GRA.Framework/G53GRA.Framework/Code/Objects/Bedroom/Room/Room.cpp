@@ -32,6 +32,7 @@ void Room::Display() {
 	makeDoor();
 	float winWidth = ((width * 0.5f) - (pillarWidth / 2.f)) / 2.f;
 	makeWindows(winWidth , height - windowSillHeight, 5.f);
+	makeRoomLight(-width*0.5f, height, -length*0.5f);
 	
 }
 
@@ -226,3 +227,12 @@ void Room::makeDoor()
 	glPopMatrix();
 }
 
+void Room::makeRoomLight(float x, float y, float z) 
+{
+	roomLight = new RoomLight();
+	glPushMatrix();
+	glTranslatef(x, y, z);
+	glScalef(1.5f, 1.5f, 1.5f);
+	roomLight->Display();
+	glPopMatrix();
+}

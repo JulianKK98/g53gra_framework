@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "Door.h"
 #include "Texture.h"
+#include "RoomLight.h"
 
 class Room :
 	public DisplayableObject
@@ -14,6 +15,7 @@ public:
 	void Display();
 private:
 	Window windows[3];
+	RoomLight *roomLight;
 	int floorTex, wallTex;
 	float pillarWidth;
 	float windowSillHeight;
@@ -25,4 +27,5 @@ private:
 	void makeWindows(float width, float height, float thickness);
 	void makePillar();
 	void makeDoor();
+	void makeRoomLight(float x, float y, float z);
 };
