@@ -6,6 +6,7 @@ class LampHead :
 	public DisplayableObject
 {
 public:
+	LampHead() {};
 	LampHead(float r1, float r2, float funnelLength, float rPivot, float lPivot) :
 		r1funnel(r1),
 		r2funnel(r2),

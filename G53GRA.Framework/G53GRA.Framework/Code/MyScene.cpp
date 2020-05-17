@@ -4,8 +4,7 @@
 #include "Objects/Bedroom/Room/Door.h"
 #include "Objects/Bedroom/Room/RoomLight.h"
 
-//test
-#include "Objects/Bedroom/Room/LampHead.h"
+
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -22,12 +21,12 @@ void MyScene::Initialise()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	/*Room *testRoom = new Room(280.f, 400.f, 200.f);
 	AddObjectToScene(testRoom);
-
+	*/
+	//float r1, float r2, float funnelLength, float rPivot, float lPivot
 	RoomLight * roomLight = new RoomLight();
-	AddObjectToScene(roomLight);*/
-
-	LampHead *lampHead = new LampHead(5.f, 7.f, 10.f, 5.f, 3.f);
-	AddObjectToScene(lampHead);
+	AddObjectToScene(roomLight);
+	
+	AddObjectToScene(roomLight);
 	
 	
 }

@@ -1,19 +1,22 @@
 #pragma once
 #include <DisplayableObject.h>
 #include "..\..\SimpleShapes\SimpleShapes.h"
+#include "LampHead.h"
 
 class RoomLight :
 	public DisplayableObject
 {
 
 public:
-	RoomLight() {
-		radius = 5.f;
-		height = 1.f;
-	}
-	~RoomLight() {};
+	RoomLight();
+		
+	~RoomLight();
 	void Display();
 private:
+	LampHead * lampHead1;
+	LampHead * lampHead2;
+	LampHead * lampHead3;
+	LampHead * lampHead4;
 	float radius;
 	float height;
 };
