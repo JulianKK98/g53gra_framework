@@ -2,6 +2,19 @@
 
 SimpleShapes simpleShape;
 
+RoomLight::RoomLight() 
+{
+	radius = 5.f;
+	height = 1.f;
+	lampHeads = {
+		new LampHead(),
+		new LampHead(),
+		new LampHead(),
+		new LampHead()
+	};
+}
+}
+
 void RoomLight::Display()
 {
 	glTranslatef(pos[0], pos[1], pos[2]);
