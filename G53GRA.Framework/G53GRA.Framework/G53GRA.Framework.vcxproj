@@ -9,6 +9,7 @@
   <ItemGroup>
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
+    <ClCompile Include="Code\Objects\Bedroom\Bed\Pillow.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Door.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\LampHead.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Room.cpp" />
@@ -22,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\MyScene.h" />
+    <ClInclude Include="Code\Objects\Bedroom\Bed\Pillow.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Door.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\LampHead.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Room.h" />

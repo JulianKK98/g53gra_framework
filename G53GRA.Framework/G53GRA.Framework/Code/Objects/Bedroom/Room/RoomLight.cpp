@@ -65,6 +65,7 @@ void RoomLight::Display()
 	glTranslatef(0.f, -yPos, 0.f);
 	glutSolidSphere(0.9f, 15, 15);
 	glRotatef(45.f, 1.f, 0.f, 0.f);
+	setUpLight(GL_LIGHT0, 5.f);
 	glScalef(scaleFactor, scaleFactor, scaleFactor);
 	lampHead2->Display();
 	glPopMatrix();
@@ -102,5 +103,12 @@ void RoomLight::Display()
 	glPopMatrix();
 
 	glPopMatrix();
+}
+
+void RoomLight::setUpLight(GLenum lightNum, float cutoffDegree)
+{
+	float dir[3] = { 0.0, 0.0, 0.0 };
+	glLightfv(lightNum, GL_SPOT_DIRECTION, dir);
+	glLightf(lightNum, GL_SPOT_CUTOFF, cutoffDegree);
 }
 

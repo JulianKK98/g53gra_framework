@@ -37,10 +37,10 @@ void Room::Display() {
 }
 
 
+
 void Room::makeWalls() {
 	std::string wallTexPath = "Textures/wall - smaller.bmp";
 	wallTex = Scene::GetTexture(wallTexPath);
-	
 	doorWidth = width * 0.25f;
 	doorHeight = height * 0.80f;
 	alcoveWidth = width - (doorWidth / 2.f);

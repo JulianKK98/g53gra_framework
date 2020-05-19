@@ -21,6 +21,8 @@ void LampHead::Display()
 	//make lightbulb
 	glTranslatef(0, -r1funnel * 0.5f, 0.f);
 	glutSolidSphere(r1funnel * 0.5f, 10, 10);
+	glEnable(GL_LIGHTING);
+	float dir[3] = { 0.f, 0.f, 0.f };
 	//add light here
 	glPopMatrix();
 

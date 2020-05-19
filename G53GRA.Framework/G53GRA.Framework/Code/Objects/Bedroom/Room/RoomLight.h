@@ -13,6 +13,7 @@ public:
 	~RoomLight();
 	void Display();
 private:
+	void setUpLight(GLenum lightNum, float cutoff);
 	LampHead * lampHead1;
 	LampHead * lampHead2;
 	LampHead * lampHead3;
