@@ -9,7 +9,7 @@
   <ItemGroup>
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
-    <ClCompile Include="Code\Objects\Bedroom\Bed\Pillow.cpp" />
+    <ClCompile Include="Code\Objects\Bedroom\Room\Bed.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Door.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\LampHead.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Room.cpp" />
@@ -23,7 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\MyScene.h" />
-    <ClInclude Include="Code\Objects\Bedroom\Bed\Pillow.h" />
+    <ClInclude Include="Code\Objects\Bedroom\Room\Bed.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Door.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\LampHead.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Room.h" />
@@ -38,6 +38,10 @@
     <ClInclude Include="Framework\Utility\Camera.h" />
     <ClInclude Include="Framework\Utility\Texture.h" />
     <ClInclude Include="Framework\Utility\VectorMath.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\floor.bmp" />
+    <Image Include="Textures\wall - smaller.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>

@@ -3,6 +3,7 @@
 #include "Door.h"
 #include "Texture.h"
 #include "RoomLight.h"
+#include "Bed.h"
 
 class Room :
 	public DisplayableObject

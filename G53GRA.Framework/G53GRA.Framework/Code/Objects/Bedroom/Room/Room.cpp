@@ -33,6 +33,13 @@ void Room::Display() {
 	float winWidth = ((width * 0.5f) - (pillarWidth / 2.f)) / 2.f;
 	makeWindows(winWidth , height - windowSillHeight, 5.f);
 	makeRoomLight(-width*0.5f, height, -length*0.5f);
+	Bed *bed = new Bed(200.f, 100.f, 60.f);
+	float len = Room::length;
+	glPushMatrix();
+	glTranslatef(-width, 0.f, -len);
+	glRotatef(180.f, 0.f, 1.f, 0.f);
+	bed->Display();
+	glPopMatrix();
 	
 }
 
@@ -186,6 +193,7 @@ void Room::makeWindows(float width, float height, float thickness)
 {
 	Window *window1 = new Window(width, height, thickness);
 	Window *window2 = new Window(width, height, thickness);
+	float pillarWidth = Room::pillarWidth;
 
 
 	float win3Width = (2.f * width) - (Room::width - alcoveWidth);
@@ -195,7 +203,6 @@ void Room::makeWindows(float width, float height, float thickness)
 	windows[0] = *window1;
 	windows[2] = *window2;
 	windows[3] = *window3;
-
 	//window 1;
 	glPushMatrix();
 	glTranslatef(0.f, windowHeight, 0.f);
@@ -204,13 +211,13 @@ void Room::makeWindows(float width, float height, float thickness)
 	glPopMatrix();
 	
 	glPushMatrix();
-	glTranslatef(0.f - width, windowHeight, 0.f);
+	glTranslatef(-width, windowHeight, 0.f);
 	glRotatef(180.f, 0.f, 1.f, 0.f);
 	window2->Display();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef((-2 * width) + pillarWidth, windowHeight, 0.f);
+	glTranslatef(-(2*width) - pillarWidth, windowHeight, 0.f);
 	glRotatef(180.f, 0.f, 1.f, 0.f);
 	window3->Display();
 	glPopMatrix();

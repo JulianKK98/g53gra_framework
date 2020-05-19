@@ -58,6 +58,49 @@ void SimpleShapes::makeCuboid(float width, float height, float thickness) {
 	glEnd();
 }
 
+void SimpleShapes::makeCuboid(float width, float height, float thickness, int texId) {
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texId);
+	glBegin(GL_QUADS);
+	//front
+	glTexCoord2d(0, 0); glVertex3f(0.f, 0.f, 0.f);
+	glTexCoord2d(1, 0); glVertex3f(width, 0.f, 0.f);
+	glTexCoord2d(1, 1); glVertex3f(width, height, 0.f);
+	glTexCoord2d(0, 1); glVertex3f(0.f, height, 0.f);
+	//back
+	glNormal3d(1, 1, 1);
+	glTexCoord2d(0, 0); glVertex3f(width, 0.f, -thickness);
+	glTexCoord2d(1, 0); glVertex3f(0.f, 0.f, -thickness);
+	glTexCoord2d(1, 1); glVertex3f(0.f, height, -thickness);
+	glTexCoord2d(0, 1); glVertex3f(width, height, -thickness);
+	//left
+	glNormal3d(1, 0, 0);
+	glTexCoord2d(0, 0); glVertex3f(0.f, 0.f, 0.f);
+	glTexCoord2d(1, 0); glVertex3f(0.f, height, 0.f);
+	glTexCoord2d(1, 1); glVertex3f(0.f, height, -thickness);
+	glTexCoord2d(0, 1); glVertex3f(0.f, 0.f, -thickness);
+	//right
+	glNormal3d(-1, 0, 0);
+	glTexCoord2d(0, 0); glVertex3f(width, 0.f, 0.f);
+	glTexCoord2d(1, 0); glVertex3f(width, 0.f, -thickness);
+	glTexCoord2d(1, 1); glVertex3f(width, height, -thickness);
+	glTexCoord2d(0, 1); glVertex3f(width, height, 0.f);
+	//top
+	glNormal3d(0, -1, 0);
+	glTexCoord2d(0, 0); glVertex3f(0.f, height, 0.f);
+	glTexCoord2d(1, 0); glVertex3f(width, height, 0.f);
+	glTexCoord2d(1, 1); glVertex3f(width, height, -thickness);
+	glTexCoord2d(0, 1); glVertex3f(0.f, height, -thickness);
+	//bottom
+	glNormal3d(0, 1, 0);
+	glTexCoord2d(0, 0); glVertex3f(0.f, 0.f, -thickness);
+	glTexCoord2d(1, 0); glVertex3f(width, 0.f, -thickness);
+	glTexCoord2d(1, 1); glVertex3f(width, 0.f, 0.f);
+	glTexCoord2d(0, 1); glVertex3f(0.f, 0.f, 0.f);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+}
 
 void SimpleShapes::makeCylinder(float h, float r, bool frontClosed, bool backClosed) {
 	float res = 0.1*M_PI;           // resolution (in radians: equivalent to 18 degrees)

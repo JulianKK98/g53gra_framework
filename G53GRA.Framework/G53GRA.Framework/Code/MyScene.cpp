@@ -19,6 +19,7 @@ void MyScene::Initialise()
 	
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	Room *testRoom = new Room(280.f, 400.f, 200.f);
+
 	AddObjectToScene(testRoom);
 
 }
