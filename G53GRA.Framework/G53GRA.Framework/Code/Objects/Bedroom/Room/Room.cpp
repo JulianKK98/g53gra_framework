@@ -39,8 +39,13 @@ void Room::Display() {
 	desk->Display();
 	glPopMatrix();
 
+	glPushMatrix();
+	glTranslatef(-width *0.7f, 5.f, windowSillZ *4.5f );
+	glRotatef(-90.f, 0.f, 1.f, 0.f);
+	glScalef(0.8f, 0.8f, 0.8f);
 	chair = new Chair(10.f, 20.f, 100.f);
 	chair->Display();
+	glPopMatrix();
 }
 
 
@@ -48,8 +53,10 @@ void Room::Display() {
 *Constructs walls with GL_QUADS
 */
 void Room::makeWalls() {
-	
-	Room::wallTex = Scene::GetTexture("Textures/wall - smaller.bmp");
+	if(wallTex == 0)
+	{
+		Room::wallTex = Scene::GetTexture("Textures/wall - smaller.bmp");
+	}
 	
 	doorWidth = width * 0.25f;
 	doorHeight = height * 0.80f;
@@ -108,8 +115,10 @@ void Room::makeWalls() {
 */
 void Room::makeFloorNCeiling() 
 {
-
-	Room::floorTex = Scene::GetTexture("Textures/floor.bmp"); 
+	if(Room::floorTex == 0)
+	{
+		Room::floorTex = Scene::GetTexture("Textures/floor.bmp"); 
+	}
 	
 	//floor
 	glEnable(GL_TEXTURE_2D);

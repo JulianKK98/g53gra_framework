@@ -60,6 +60,9 @@
     <ClCompile Include="Code\Objects\Bedroom\Chair\Chair.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Objects\Bedroom\Wardrobe\Wardrobe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Engine\Engine.h">
@@ -114,6 +117,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Objects\Bedroom\Chair\Chair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Objects\Bedroom\Wardrobe\Wardrobe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
