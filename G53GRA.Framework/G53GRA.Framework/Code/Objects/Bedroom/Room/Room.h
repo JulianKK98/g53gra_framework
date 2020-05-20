@@ -6,6 +6,7 @@
 #include "Bed.h"
 #include "../Chair/Chair.h"
 #include "../Desk/Desk.h"
+#include "../Wardrobe/Wardrobe.h"
 
 class Room :
 	public DisplayableObject
@@ -22,6 +23,7 @@ private:
 	Bed *bed;
 	Desk *desk;
 	Chair *chair;
+	Wardrobe *wardrobe;
 	int floorTex = 0;
 	int	wallTex = 0;
 	float pillarWidth;

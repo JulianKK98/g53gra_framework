@@ -5,7 +5,7 @@ Room:: ~Room()
 	delete[] windows;
 	delete bed;
 	delete desk;
-
+	delete chair;
 }
 
 
@@ -46,6 +46,13 @@ void Room::Display() {
 	chair = new Chair(10.f, 20.f, 100.f);
 	chair->Display();
 	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-width*0.25f, 0.f,-length * 0.25f);
+	glRotatef(90, 0.f, 1.f, 0.f);
+	wardrobe = new Wardrobe(width * 0.25f, height * 0.75f, width *0.25f);
+	wardrobe->Display();
+	glPopMatrix();
 }
 
 
@@ -53,10 +60,7 @@ void Room::Display() {
 *Constructs walls with GL_QUADS
 */
 void Room::makeWalls() {
-	if(wallTex == 0)
-	{
-		Room::wallTex = Scene::GetTexture("Textures/wall - smaller.bmp");
-	}
+	wallTex = Scene::GetTexture("Textures/wall - smaller.bmp");
 	
 	doorWidth = width * 0.25f;
 	doorHeight = height * 0.80f;
@@ -115,10 +119,8 @@ void Room::makeWalls() {
 */
 void Room::makeFloorNCeiling() 
 {
-	if(Room::floorTex == 0)
-	{
-		Room::floorTex = Scene::GetTexture("Textures/floor.bmp"); 
-	}
+	floorTex = Scene::GetTexture("Textures/floor.bmp"); 
+	
 	
 	//floor
 	glEnable(GL_TEXTURE_2D);
