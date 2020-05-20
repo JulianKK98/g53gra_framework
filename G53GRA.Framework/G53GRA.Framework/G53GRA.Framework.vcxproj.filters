@@ -54,6 +54,12 @@
     <ClCompile Include="Code\Objects\Bedroom\Room\Bed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Objects\Bedroom\Desk\Desk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Objects\Bedroom\Chair\Chair.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Engine\Engine.h">
@@ -104,12 +110,24 @@
     <ClInclude Include="Code\Objects\Bedroom\Room\Bed.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Objects\Bedroom\Desk\Desk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Objects\Bedroom\Chair\Chair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Textures\floor.bmp">
+    <Image Include="Textures\wall - smaller.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Textures\wall - smaller.bmp">
+    <Image Include="Textures\floor1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\wood1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\wood2.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

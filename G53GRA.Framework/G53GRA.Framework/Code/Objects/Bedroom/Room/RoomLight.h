@@ -14,10 +14,10 @@ public:
 	void Display();
 private:
 	void setUpLight(GLenum lightNum, float cutoff);
-	LampHead * lampHead1;
-	LampHead * lampHead2;
-	LampHead * lampHead3;
-	LampHead * lampHead4;
+	LampHead * lampHead1 = NULL;
+	LampHead * lampHead2 = NULL;
+	LampHead * lampHead3 = NULL;
+	LampHead * lampHead4 = NULL;
 	float radius;
 	float height;
 };

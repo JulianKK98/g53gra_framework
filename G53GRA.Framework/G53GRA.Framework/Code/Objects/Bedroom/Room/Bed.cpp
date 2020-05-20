@@ -46,56 +46,56 @@ void Bed::makeFrame()
 	glPushMatrix();
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glTranslatef(0.f, 0.f, framePillarWidth *0.5);
-	simpleShape.makeCuboid(framePillarWidth, height, framePillarWidth, frameTex);
+	simpleShape.makeCuboid(framePillarWidth, height, framePillarWidth, frameTex, 1);
 	glPopMatrix();
 
 	//front plank 1 - lower
 	glPushMatrix();
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glTranslatef(framePillarWidth, height * 0.3, 0);
-	simpleShape.makeCuboid(width - framePillarWidth, framePillarWidth, plankThickness, frameTex);
+	simpleShape.makeCuboid(width - framePillarWidth, framePillarWidth, plankThickness, frameTex, 1);
 	glPopMatrix();
 
 	//front plank 2 - upper
 	glPushMatrix();
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glTranslatef(framePillarWidth, height * 0.75, 0);
-	simpleShape.makeCuboid(width - framePillarWidth, framePillarWidth, plankThickness, frameTex);
+	simpleShape.makeCuboid(width - framePillarWidth, framePillarWidth, plankThickness, frameTex, 1);
 	glPopMatrix();
 
 	//Pillar at width,0,0 - local
 	glPushMatrix();
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glTranslatef(width, 0.f, framePillarWidth *0.5);
-	simpleShape.makeCuboid(framePillarWidth, height, framePillarWidth, frameTex);
+	simpleShape.makeCuboid(framePillarWidth, height, framePillarWidth, frameTex, 1);
 	glPopMatrix();
 
 	//Side - lower frame left
 	glPushMatrix();
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glTranslatef(framePillarWidth * 0.5f, height * 0.3, length);
-	simpleShape.makeCuboid(framePillarWidth * 0.5f, framePillarWidth, length, frameTex);
+	simpleShape.makeCuboid(framePillarWidth * 0.5f, framePillarWidth, length, frameTex, 1);
 	glPopMatrix();
 
 	//Side - lower frame right
 	glPushMatrix();
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glTranslatef(width + (0.125f * framePillarWidth), height * 0.3, length);
-	simpleShape.makeCuboid(framePillarWidth * 0.5f, framePillarWidth, length, frameTex);
+	simpleShape.makeCuboid(framePillarWidth * 0.5f, framePillarWidth, length, frameTex, 1);
 	glPopMatrix();
 
 	//Pillar at width,0,length
 	glPushMatrix();
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glTranslatef(width, 0.f, length);
-	simpleShape.makeCuboid(framePillarWidth, height * 0.75f, framePillarWidth, frameTex);
+	simpleShape.makeCuboid(framePillarWidth, height * 0.75f, framePillarWidth, frameTex, 1);
 	glPopMatrix();
 
 	//Pillar at 0, 0,length
 	glPushMatrix();
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glTranslatef(0.f, 0.f, length);
-	simpleShape.makeCuboid(framePillarWidth, height * 0.75f, framePillarWidth, frameTex);
+	simpleShape.makeCuboid(framePillarWidth, height * 0.75f, framePillarWidth, frameTex, 1);
 	glPopMatrix();
 
 	//Back plank 1 - lower
@@ -106,7 +106,8 @@ void Bed::makeFrame()
 		width - framePillarWidth, 
 		framePillarWidth, 
 		plankThickness, 
-		frameTex
+		frameTex,
+		1
 	);
 	glPopMatrix();
 
@@ -117,7 +118,8 @@ void Bed::makeFrame()
 		width - framePillarWidth, 
 		framePillarWidth, 
 		plankThickness, 
-		frameTex
+		frameTex,
+		1
 	);
 	glPopMatrix();
 

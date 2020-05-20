@@ -3,11 +3,10 @@
 Room:: ~Room()
 {
 	delete[] windows;
+	delete bed;
+	delete desk;
 
 }
-
-
-
 
 
 Room::Room(float w, float l, float h) :
@@ -15,8 +14,6 @@ Room::Room(float w, float l, float h) :
 {
 
 }
-
-
 
 void Room::Display() {
 	glTranslatef(pos[0], pos[1], pos[2]);
@@ -28,26 +25,32 @@ void Room::Display() {
 	makeWalls();
 	pillarWidth = 0.15f * width;
 	makePillar();
-	makeWindowSill(0.05f, 0.3f);
+	float windowSillZ = makeWindowSill(0.05f, 0.3f);
 	makeDoor();
 	float winWidth = ((width * 0.5f) - (pillarWidth / 2.f)) / 2.f;
 	makeWindows(winWidth , height - windowSillHeight, 5.f);
-	makeRoomLight(-width*0.5f, height, -length*0.5f);
-	Bed *bed = new Bed(200.f, 100.f, 60.f);
-	float len = Room::length;
+	makeRoomLight(-width * 0.5f, height, -length * 0.5f);
+	makeBed();
+
 	glPushMatrix();
-	glTranslatef(-width, 0.f, -len);
-	glRotatef(180.f, 0.f, 1.f, 0.f);
-	bed->Display();
+	glTranslatef(-width + (width * 0.125f), 0.f, windowSillZ *2.f);
+	glRotatef(90.0f, 0.f, 1.f, 0.f);
+	desk = new Desk(width * 0.15f, length*0.25f, 60.f);
+	desk->Display();
 	glPopMatrix();
-	
+
+	chair = new Chair(10.f, 20.f, 100.f);
+	chair->Display();
 }
 
 
-
+/*
+*Constructs walls with GL_QUADS
+*/
 void Room::makeWalls() {
-	std::string wallTexPath = "Textures/wall - smaller.bmp";
-	wallTex = Scene::GetTexture(wallTexPath);
+	
+	Room::wallTex = Scene::GetTexture("Textures/wall - smaller.bmp");
+	
 	doorWidth = width * 0.25f;
 	doorHeight = height * 0.80f;
 	alcoveWidth = width - (doorWidth / 2.f);
@@ -100,12 +103,14 @@ void Room::makeWalls() {
 	glDisable(GL_TEXTURE_2D);
 }
 
-
-
+/*
+*
+*/
 void Room::makeFloorNCeiling() 
 {
-	std::string floorTexPath = "Textures/floor.bmp";
-	floorTex = Scene::GetTexture(floorTexPath);
+
+	Room::floorTex = Scene::GetTexture("Textures/floor.bmp"); 
+	
 	//floor
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, floorTex);
@@ -132,8 +137,10 @@ void Room::makeFloorNCeiling()
 	glEnd();
 }
 
-
-void Room::makeWindowSill(float thicknessMod, float heightMod)
+/*
+* Makes the windowsill 
+*/
+float Room::makeWindowSill(float thicknessMod, float heightMod)
 {
 	windowSillHeight = height * heightMod;
 	float windowSillZ = thicknessMod * - length;
@@ -157,8 +164,12 @@ void Room::makeWindowSill(float thicknessMod, float heightMod)
 	glTexCoord2f(0, 2); glVertex3f(-width, windowSillHeight, 0.f);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
+	return windowSillZ;
 }
 
+/*
+* Creates the pillar next to the window
+*/
 void Room::makePillar() 
 {
 	float pillarXPos = -0.5f* width;
@@ -189,6 +200,10 @@ void Room::makePillar()
 	glEnd();
 }
 
+/*
+* Makes 3 windows. 2 with the same thickness. 
+* the other's dimensions are calculated from the other 2 windows.
+*/
 void Room::makeWindows(float width, float height, float thickness)
 {
 	Window *window1 = new Window(width, height, thickness);
@@ -224,6 +239,9 @@ void Room::makeWindows(float width, float height, float thickness)
 
 }
 
+/*
+*
+*/
 void Room::makeDoor() 
 {
 
@@ -234,6 +252,9 @@ void Room::makeDoor()
 	glPopMatrix();
 }
 
+/*
+* Creates and resizes the room light
+*/
 void Room::makeRoomLight(float x, float y, float z) 
 {
 	roomLight = new RoomLight();
@@ -241,5 +262,16 @@ void Room::makeRoomLight(float x, float y, float z)
 	glTranslatef(x, y, z);
 	glScalef(1.5f, 1.5f, 1.5f);
 	roomLight->Display();
+	glPopMatrix();
+}
+
+void Room::makeBed()
+{
+	bed = new Bed(200.f, 100.f, 60.f);
+	float len = Room::length;
+	glPushMatrix();
+	glTranslatef(-width + 110.f, 0.f, -len * 0.5f);
+	glRotatef(180.f, 0.f, 1.f, 0.f);
+	bed->Display();
 	glPopMatrix();
 }

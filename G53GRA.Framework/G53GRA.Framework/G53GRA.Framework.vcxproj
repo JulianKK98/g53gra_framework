@@ -9,6 +9,8 @@
   <ItemGroup>
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
+    <ClCompile Include="Code\Objects\Bedroom\Chair\Chair.cpp" />
+    <ClCompile Include="Code\Objects\Bedroom\Desk\Desk.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Bed.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Door.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\LampHead.cpp" />
@@ -23,6 +25,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\MyScene.h" />
+    <ClInclude Include="Code\Objects\Bedroom\Chair\Chair.h" />
+    <ClInclude Include="Code\Objects\Bedroom\Desk\Desk.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Bed.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Door.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\LampHead.h" />
@@ -40,8 +44,10 @@
     <ClInclude Include="Framework\Utility\VectorMath.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Textures\floor.bmp" />
+    <Image Include="Textures\floor1.bmp" />
     <Image Include="Textures\wall - smaller.bmp" />
+    <Image Include="Textures\wood1.bmp" />
+    <Image Include="Textures\wood2.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>

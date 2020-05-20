@@ -4,6 +4,8 @@
 #include "Texture.h"
 #include "RoomLight.h"
 #include "Bed.h"
+#include "../Chair/Chair.h"
+#include "../Desk/Desk.h"
 
 class Room :
 	public DisplayableObject
@@ -17,16 +19,21 @@ public:
 private:
 	Window windows[3];
 	RoomLight *roomLight;
-	int floorTex, wallTex;
+	Bed *bed;
+	Desk *desk;
+	Chair *chair;
+	int floorTex = 0;
+	int	wallTex = 0;
 	float pillarWidth;
 	float windowSillHeight;
 	float alcoveWidth;
 	float doorWidth, doorHeight;
 	void makeWalls();
 	void makeFloorNCeiling();
-	void makeWindowSill(float thicknessMod, float heightMod);
+	float makeWindowSill(float thicknessMod, float heightMod);
 	void makeWindows(float width, float height, float thickness);
 	void makePillar();
 	void makeDoor();
 	void makeRoomLight(float x, float y, float z);
+	void makeBed();
 };
