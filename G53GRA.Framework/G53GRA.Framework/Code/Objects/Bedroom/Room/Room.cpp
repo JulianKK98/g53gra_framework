@@ -21,15 +21,6 @@ void Room::Display() {
 	glRotatef(rotation[0], 1.f, 0.f, 0.f); //x
 	glRotatef(rotation[1], 0.f, 1.f, 0.f); //y
 	glRotatef(rotation[2], 0.f, 0.f, 1.f); //z
-	if(wallTex == 0)
-	{
-		wallTex = Scene::GetTexture("Textures/wall - smaller.bmp");
-	}
-	if(floorTex ==0)
-	{
-		floorTex = Scene::GetTexture("Textures/floor.bmp");
-	}
-
 	makeFloorNCeiling();
 	makeWalls();
 	pillarWidth = 0.15f * width;
@@ -77,7 +68,7 @@ void Room::Display() {
 *Constructs walls with GL_QUADS
 */
 void Room::makeWalls() {
-	
+	wallTex = Scene::GetTexture("Textures/wall - smaller.bmp");
 	
 	doorWidth = width * 0.25f;
 	doorHeight = height * 0.80f;
@@ -96,7 +87,7 @@ void Room::makeWalls() {
 	
 	glColor3f(1.f, 1.f, 1.f);
 	//Above door
-	glNormal3d(0, 0, 0);
+	glNormal3d(0, 0, 1);
 	glTexCoord2f(0, 0); glVertex3f(0.f, doorHeight, -length);
 	glTexCoord2f(4, 0); glVertex3f(0.f, height, -length);
 	glTexCoord2f(4, 4); glVertex3f(-doorWidth, height, -length);
@@ -116,7 +107,7 @@ void Room::makeWalls() {
 	glTexCoord2f(0, 4); glVertex3f(-width, 0.f, -length * 0.4f);
 
 	//alcove
-	glNormal3d(1, 1, 1);
+	glNormal3d(0, 0, -1);
 	glTexCoord2f(0, 0); glVertex3f(-width, 0.f, -length * 0.4f);
 	glTexCoord2f(4, 0); glVertex3f(-width, height, -length * 0.4f);
 	glTexCoord2f(4, 4); glVertex3f(-alcoveWidth, height, -length * 0.4f);
@@ -136,6 +127,7 @@ void Room::makeWalls() {
 */
 void Room::makeFloorNCeiling() 
 {
+	floorTex = Scene::GetTexture("Textures/floor.bmp"); 
 	
 	
 	//floor

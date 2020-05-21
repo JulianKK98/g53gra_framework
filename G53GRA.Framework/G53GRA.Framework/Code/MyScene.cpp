@@ -1,9 +1,7 @@
 #include "MyScene.h"
 #include "Objects/Bedroom/Room/Room.h"
-#include "Objects/Bedroom/Room/Window.h"
-#include "Objects/Bedroom/Room/Door.h"
-#include "Objects/Bedroom/Desk/Desk.h"
-#include "Objects/Bedroom/Wardrobe/Drawer.h"
+#include "Objects/Bedroom/Monitor/Screen.h"
+
 
 
 
@@ -23,9 +21,10 @@ void MyScene::Initialise()
 	
 	glShadeModel(GL_SMOOTH);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	Room *testRoom = new Room(280.f, 400.f, 200.f);
-	
-	AddObjectToScene(testRoom);
+	//Room *testRoom = new Room(280.f, 400.f, 200.f);
+	Screen *screen = new Screen(100, 100, 1.5f);
+	AddObjectToScene(screen);
+	screen->loadFrameTextures();
 
 }
 

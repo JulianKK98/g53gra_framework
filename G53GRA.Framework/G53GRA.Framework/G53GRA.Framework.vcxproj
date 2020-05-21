@@ -11,6 +11,8 @@
     <ClCompile Include="Code\MyScene.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Chair\Chair.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Desk\Desk.cpp" />
+    <ClCompile Include="Code\Objects\Bedroom\Monitor\Monitor.cpp" />
+    <ClCompile Include="Code\Objects\Bedroom\Monitor\Screen.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Bed.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\Door.cpp" />
     <ClCompile Include="Code\Objects\Bedroom\Room\LampHead.cpp" />
@@ -30,6 +32,8 @@
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\Objects\Bedroom\Chair\Chair.h" />
     <ClInclude Include="Code\Objects\Bedroom\Desk\Desk.h" />
+    <ClInclude Include="Code\Objects\Bedroom\Monitor\Monitor.h" />
+    <ClInclude Include="Code\Objects\Bedroom\Monitor\Screen.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Bed.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\Door.h" />
     <ClInclude Include="Code\Objects\Bedroom\Room\LampHead.h" />
