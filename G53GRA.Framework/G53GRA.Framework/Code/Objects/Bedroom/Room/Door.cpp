@@ -11,6 +11,18 @@ void Door::Display() {
 	glRotatef(rotation[0], 1.f, 0.f, 0.f); //x
 	glRotatef(rotation[1], 0.f, 1.f, 0.f); //y
 	glRotatef(rotation[2], 0.f, 0.f, 1.f); //z
+
+	float mat_colour[]                      // colour reflected by diffuse light
+		= { 1.f, 1.f, 1.f, 1.f };
+	float mat_ambient[]                     // ambient colour
+		= { 1.f, 1.f, 1.f, 1.f };
+	float mat_spec[]                        // specular colour
+		= { 0.5f, 0.5f, 0.5f, 1.f };        //  reflectance 
+	glPushAttrib(GL_ALL_ATTRIB_BITS);       // save current style attributes (inc. material properties)
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient); // set colour for ambient reflectance
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, mat_colour);  // set colour for diffuse reflectance
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_spec);   // set colour for specular reflectance
+
 	makeDoor();
 	makeDoorKnob(2.f, 5.f, 6.f, 3.f);
 
@@ -20,6 +32,7 @@ void Door::Display() {
 	glTranslatef(0.f, -height, 3.f);
 	makeDoorKnob(2.f, 5.f, 6.f, 3.f);
 	glPopMatrix();
+	glPopAttrib();
 	
 }
 

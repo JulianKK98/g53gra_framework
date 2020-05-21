@@ -28,7 +28,6 @@ void Drawer::makeFrame()
 	simpleShape.makeCuboid(length, frameWidth, length * 0.5f, drawerTex,1);
 	//left side
 	glPushMatrix();
-	glColor3ub(128, 128, 128);
 	glTranslatef(0.f, frameWidth, 0.f);
 	simpleShape.makeCuboid(
 		frameWidth, 
@@ -40,7 +39,6 @@ void Drawer::makeFrame()
 	//right side
 	//left side
 	glPushMatrix();
-	glColor3ub(128, 128, 128);
 	glTranslatef(length- frameWidth, frameWidth, 0.f);
 	simpleShape.makeCuboid(
 		frameWidth, 

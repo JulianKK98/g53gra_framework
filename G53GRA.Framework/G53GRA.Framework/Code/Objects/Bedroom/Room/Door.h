@@ -1,5 +1,8 @@
 #pragma once
 #include <DisplayableObject.h>
+#include <cmath>
+#include <VectorMath.h>
+#include "../../SimpleShapes/SimpleShapes.h"
 
 class Door :
 	public DisplayableObject

@@ -36,7 +36,7 @@ void RoomLight::Display()
 
 	float yPos = 1.f;
 	//Make base
-	glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHTING);
 	glPushMatrix();
 	glColor3f(0.5f, 0.5f, 0.5f);
 	simpleShape.makeCylinder(height, radius, true, true);
@@ -50,7 +50,7 @@ void RoomLight::Display()
 	glPushMatrix();
 	glTranslatef(0.f, -yPos, 0.f);
 	glutSolidSphere(0.9f, 15, 15);
-	setUpLight(GL_LIGHT0, 50.f);
+	setUpLight(GL_LIGHT0, 15.f, 1.f);
 	glScalef(scaleFactor, scaleFactor, scaleFactor);
 	lampHead1->Display();
 	glPopMatrix();
@@ -67,6 +67,7 @@ void RoomLight::Display()
 	glTranslatef(0.f, -yPos, 0.f);
 	glutSolidSphere(0.9f, 15, 15);
 	glRotatef(45.f, 1.f, 0.f, 0.f);
+	setUpLight(GL_LIGHT1, 40.f, 1.f);
 	glScalef(scaleFactor, scaleFactor, scaleFactor);
 	lampHead2->Display();
 	glPopMatrix();
@@ -83,6 +84,7 @@ void RoomLight::Display()
 	glTranslatef(0.f, -yPos, 0.f);
 	glutSolidSphere(0.9f, 15, 15);
 	glRotatef(-30.f, 0.5f, 1.f, 0.f);
+	setUpLight(GL_LIGHT2, 40.f, 1.f);
 	glScalef(scaleFactor, scaleFactor, scaleFactor);
 	lampHead3->Display();
 	glPopMatrix();
@@ -99,19 +101,18 @@ void RoomLight::Display()
 	glTranslatef(0.f, -yPos, 0.f);
 	glutSolidSphere(0.9f, 15, 15);
 	glRotatef(-45.f, 1.f, 1.f, 0.f);
+	setUpLight(GL_LIGHT3, 40.f, 1.5f);
 	glScalef(scaleFactor, scaleFactor, scaleFactor);
 	lampHead4->Display();
 	glPopMatrix();
-
 	glPopMatrix();
-	glDisable(GL_LIGHTING);
 }
 
-void RoomLight::setUpLight(GLenum lightNum, float cutoffDegree)
+void RoomLight::setUpLight(GLenum lightNum, float cutoffDegree, float strMod)
 {
 	float dir[3] = { 0.0, -1.0, 0.0 };
 	float amb[4] = { 1.0, 0.93f, 0.85, 1.0f };
-	float diff[4] = { 0.9f, 0.9f, 0.9f, 1.0f };
+	float diff[4] = { 0.5f *strMod, 0.5f *strMod, 0.5f *strMod, 1.0f };
 	float spec[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	float pos[3] = { 0.f, 100.f, 0.f};
 	glLightfv(lightNum, GL_AMBIENT, amb);
@@ -121,5 +122,8 @@ void RoomLight::setUpLight(GLenum lightNum, float cutoffDegree)
 
 	glLightfv(lightNum, GL_SPOT_DIRECTION, dir);
 	glLightf(lightNum, GL_SPOT_CUTOFF, cutoffDegree);
+	glLightf(lightNum, GL_SPOT_EXPONENT, 1.5f);
+	glEnable(GL_LIGHTING);
+	glEnable(lightNum);
 }
 

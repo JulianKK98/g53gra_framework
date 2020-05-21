@@ -11,6 +11,17 @@ void Wardrobe::Display()
 	{
 		wardrobeTex = Scene::GetTexture("Textures/wood2.bmp");
 	}
+	float mat_colour[]                      // colour reflected by diffuse light
+		= { 1.f, 1.f, 1.f, 1.f };
+	float mat_ambient[]                     // ambient colour
+		= { 0.29f, 0.14f, 0.11f, 1.f };
+	float mat_spec[]                        // specular colour
+		= { 0.1f, 0.1f, 0.1f, 1.f };        //  reflectance 
+	glPushAttrib(GL_ALL_ATTRIB_BITS);       // save current style attributes (inc. material properties)
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient); // set colour for ambient reflectance
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, mat_colour);  // set colour for diffuse reflectance
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_spec);   // set colour for specular reflectance
+
 	topSectionThickness = height * 0.1f;
 	glColor3ub(168, 121, 54);
 	glPushMatrix();
@@ -25,6 +36,7 @@ void Wardrobe::Display()
 	makeBase(); 
 	makeSupports();
 	makeDoors();
+	glPopAttrib();
 }
 
 void Wardrobe::makeBase()

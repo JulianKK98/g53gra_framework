@@ -13,7 +13,7 @@ public:
 	~RoomLight();
 	void Display();
 private:
-	void setUpLight(GLenum lightNum, float cutoff);
+	void setUpLight(GLenum lightNum, float cutoff, float strMod);
 	LampHead * lampHead1 = NULL;
 	LampHead * lampHead2 = NULL;
 	LampHead * lampHead3 = NULL;

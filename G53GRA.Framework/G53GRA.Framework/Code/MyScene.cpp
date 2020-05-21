@@ -18,8 +18,6 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 
 void MyScene::Initialise()
 {
-	
-	glShadeModel(GL_SMOOTH);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	Room *room = new Room(280.f, 400.f, 200.f);
 	Monitor *monitor = new Monitor(10.f, 100.f, 50.f, 1.5, room);

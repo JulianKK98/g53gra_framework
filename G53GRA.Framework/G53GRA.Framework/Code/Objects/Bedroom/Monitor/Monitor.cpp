@@ -1,5 +1,7 @@
 #include "Monitor.h"
-
+/*
+* This monitor object uses a deconstructed gif from https://gifer.com/en/1Gyi
+*/
 Monitor::Monitor(float l, float w, float h, float aniTime, Room *room) :
 	length(l), width(w), height(h), animationTime(aniTime), room(room)
 {
@@ -23,7 +25,9 @@ void Monitor::Display()
 	makeFrame();
 	makeScreen();
 }
-
+/*
+*Creates the frame that goes around the screen
+*/
 void Monitor::makeFrame()
 {
 	frameThickness = width* 0.01f;
@@ -58,6 +62,9 @@ void Monitor::makeFrame()
 	glPopMatrix();
 }
 
+/*
+* Makes a stand 
+*/
 void Monitor::makeStand()
 {
 	float midX = width * 0.5;

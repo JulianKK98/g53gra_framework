@@ -16,6 +16,7 @@ Room::Room(float w, float l, float h) :
 }
 
 void Room::Display() {
+	glEnable(GL_LIGHTING);
 	glTranslatef(pos[0], pos[1], pos[2]);
 	glScalef(scale[0], scale[1], scale[2]);
 	glRotatef(rotation[0], 1.f, 0.f, 0.f); //x
@@ -70,6 +71,17 @@ void Room::Display() {
 void Room::makeWalls() {
 	wallTex = Scene::GetTexture("Textures/wall - smaller.bmp");
 	
+	float mat_colour[]                      // colour reflected by diffuse light
+		= { 1.f, 1.f, 1.f, 1.f };         
+	float mat_ambient[]                     // ambient colour
+		= { 1.f, 1.f, 1.f, 1.f };         
+	float mat_spec[]                        // specular colour
+		= { 0.1f, 0.1f, 0.1f, 1.f };        //  reflectance 
+	glPushAttrib(GL_ALL_ATTRIB_BITS);       // save current style attributes (inc. material properties)
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient); // set colour for ambient reflectance
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, mat_colour);  // set colour for diffuse reflectance
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_spec);   // set colour for specular reflectance
+
 	doorWidth = width * 0.25f;
 	doorHeight = height * 0.80f;
 	alcoveWidth = width - (doorWidth / 2.f);
@@ -120,6 +132,7 @@ void Room::makeWalls() {
 	glTexCoord2f(0, 4); glVertex3f(-alcoveWidth, 0.0f, 0.0f);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
+	glPopAttrib();    
 }
 
 /*
@@ -128,7 +141,16 @@ void Room::makeWalls() {
 void Room::makeFloorNCeiling() 
 {
 	floorTex = Scene::GetTexture("Textures/floor.bmp"); 
-	
+	float mat_colour[]                      // colour reflected by diffuse light
+		= { 1.f, 1.f, 1.f, 1.f };
+	float mat_ambient[]                     // ambient colour
+		= { 0.29f, 0.14f, 0.11f, 1.f };
+	float mat_spec[]                        // specular colour
+		= { 0.5f, 0.5f, 0.5f, 1.f };        //  reflectance 
+	glPushAttrib(GL_ALL_ATTRIB_BITS);       // save current style attributes (inc. material properties)
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient); // set colour for ambient reflectance
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, mat_colour);  // set colour for diffuse reflectance
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, mat_spec);   // set colour for specular reflectance
 	
 	//floor
 	glEnable(GL_TEXTURE_2D);
@@ -142,6 +164,7 @@ void Room::makeFloorNCeiling()
 	glTexCoord2d(0, 1); glVertex3f(-width, 0.f, 0.f);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
+	glPopAttrib();
 	
 
 	//ceiling
