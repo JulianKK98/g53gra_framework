@@ -72,9 +72,6 @@
     <ClCompile Include="Code\Objects\Bedroom\Monitor\Monitor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Objects\Bedroom\Monitor\Screen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Engine\Engine.h">
@@ -141,9 +138,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Objects\Bedroom\Monitor\Monitor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Objects\Bedroom\Monitor\Screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

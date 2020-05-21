@@ -294,3 +294,9 @@ void Room::makeBed()
 	bed->Display();
 	glPopMatrix();
 }
+
+float * Room::getMonitorCoords()
+{
+	float res[3] = { -width * 0.8f, length*0.151f , -0.18*length };
+	return res;
+}

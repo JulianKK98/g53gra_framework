@@ -1,3 +1,4 @@
+#pragma once
 #include <DisplayableObject.h>
 #include "Window.h"
 #include "Door.h"
@@ -12,13 +13,14 @@
 class Room :
 	public DisplayableObject
 {
-	const float width, length, height;
-	
 public:
 	Room(float w, float l, float h);
 	~Room();
 	void Display();
+	float* getMonitorCoords();
 private:
+	float width, length, height;
+
 	Window windows[3];
 	RoomLight *roomLight;
 	Bed *bed;

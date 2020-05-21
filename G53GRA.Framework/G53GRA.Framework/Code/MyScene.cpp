@@ -1,6 +1,6 @@
 #include "MyScene.h"
 #include "Objects/Bedroom/Room/Room.h"
-#include "Objects/Bedroom/Monitor/Screen.h"
+#include "Objects/Bedroom/Monitor/Monitor.h"
 
 
 
@@ -21,11 +21,10 @@ void MyScene::Initialise()
 	
 	glShadeModel(GL_SMOOTH);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	//Room *testRoom = new Room(280.f, 400.f, 200.f);
-	Screen *screen = new Screen(100, 100, 1.5f);
-	AddObjectToScene(screen);
-	screen->loadFrameTextures();
-
+	Room *room = new Room(280.f, 400.f, 200.f);
+	Monitor *monitor = new Monitor(10.f, 100.f, 50.f, 1.5, room);
+	AddObjectToScene(room);
+	AddObjectToScene(monitor);
 }
 
 void MyScene::Projection()
