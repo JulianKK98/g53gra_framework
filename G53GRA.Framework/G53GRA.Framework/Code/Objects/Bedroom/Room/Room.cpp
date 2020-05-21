@@ -27,7 +27,6 @@ void Room::Display() {
 	pillarWidth = 0.15f * width;
 	makePillar();
 	float windowSillZ = makeWindowSill(0.05f, 0.3f);
-	makeDoor();
 	float winWidth = ((width * 0.5f) - (pillarWidth / 2.f)) / 2.f;
 	makeWindows(winWidth , height - windowSillHeight, 5.f);
 	makeRoomLight(-width * 0.5f, height, -length * 0.5f);
@@ -281,18 +280,6 @@ void Room::makeWindows(float width, float height, float thickness)
 
 }
 
-/*
-*
-*/
-void Room::makeDoor() 
-{
-
-	glPushMatrix();
-	glTranslatef(-doorWidth, 0.f, -length);
-	Door *door = new Door(doorWidth , doorHeight, 2.f);
-	door->Display();
-	glPopMatrix();
-}
 
 /*
 * Creates and resizes the room light
@@ -321,5 +308,11 @@ void Room::makeBed()
 float * Room::getMonitorCoords()
 {
 	float res[3] = { -width * 0.8f, length*0.151f , -0.18*length };
+	return res;
+}
+
+float * Room::getDoorCoords()
+{
+	float res[3] = { 0.f, 0.f, length };
 	return res;
 }

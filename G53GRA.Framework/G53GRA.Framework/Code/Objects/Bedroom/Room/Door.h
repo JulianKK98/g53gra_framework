@@ -1,26 +1,34 @@
 #pragma once
 #include <DisplayableObject.h>
+#include <Animation.h>
 #include <cmath>
 #include <VectorMath.h>
 #include "../../SimpleShapes/SimpleShapes.h"
+#include "Room.h"
 
 class Door :
-	public DisplayableObject
+	public DisplayableObject,
+	public Animation
 {
 	float width, height, thickness;
 public:
-	Door(float w, float h, float t):
-		width(w), 
-		height(h), 
+	Room *room;
+	Door(float w, float h, float t, float animationT, Room *room) :
+		width(w),
+		height(h),
 		thickness(t),
-		hingeLocation(w)
-	{}
+		animationTime(animationT),
+		room(room)
+	{};
 	~Door() {};
 	void Display();
+	void Update(const double &deltaT);
 
 private:
+	float aniTime = 0;
+	float animationTime = 0;
 	float hingeLocation;
-	float maxRotationAngle;
+	float doorAngle = 0;
 	void makeDoor();
 	void makeDoorKnob(
 		float baseThickness,
@@ -28,4 +36,5 @@ private:
 		float handleThickness,
 		float cylinderHandleRadius
 	);
+	
 };

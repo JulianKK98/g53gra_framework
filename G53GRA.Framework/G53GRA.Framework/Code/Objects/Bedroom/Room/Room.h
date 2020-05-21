@@ -1,7 +1,6 @@
 #pragma once
 #include <DisplayableObject.h>
 #include "Window.h"
-#include "Door.h"
 #include "Texture.h"
 #include "RoomLight.h"
 #include "Bed.h"
@@ -17,7 +16,8 @@ public:
 	Room(float w, float l, float h);
 	~Room();
 	void Display();
-	float* getMonitorCoords();
+	float * getDoorCoords();
+	float * getMonitorCoords();
 private:
 	float width, length, height;
 
@@ -38,7 +38,6 @@ private:
 	float makeWindowSill(float thicknessMod, float heightMod);
 	void makeWindows(float width, float height, float thickness);
 	void makePillar();
-	void makeDoor();
 	void makeRoomLight(float x, float y, float z);
 	void makeBed();
 };
