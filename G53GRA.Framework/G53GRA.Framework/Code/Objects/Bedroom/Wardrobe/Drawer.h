@@ -20,6 +20,7 @@ private:
 	float crossWidth;
 	float frameWidth;
 	float length, thickness;
+	int drawerTex = 0;
 	SimpleShapes simpleShape;
 	DrawerBox *box1 = NULL;
 	DrawerBox *box2 = NULL;

@@ -7,6 +7,7 @@
 #include "../Chair/Chair.h"
 #include "../Desk/Desk.h"
 #include "../Wardrobe/Wardrobe.h"
+#include "../Wardrobe/Drawer.h"
 
 class Room :
 	public DisplayableObject

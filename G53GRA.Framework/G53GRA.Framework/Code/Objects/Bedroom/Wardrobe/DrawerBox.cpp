@@ -2,7 +2,7 @@
 
 void DrawerBox::Display()
 {
-	glColor3ub(colour[0], colour[0], colour[0]);
+	glColor3ub(colour[0], colour[1], colour[2]);
 	makeBox(length, length, length);
 }
 

@@ -23,9 +23,9 @@ void MyScene::Initialise()
 	
 	glShadeModel(GL_SMOOTH);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	//Room *testRoom = new Room(280.f, 400.f, 200.f);
-	Drawer *drawer = new Drawer(20.f);
-	AddObjectToScene(drawer);
+	Room *testRoom = new Room(280.f, 400.f, 200.f);
+	
+	AddObjectToScene(testRoom);
 
 }
 

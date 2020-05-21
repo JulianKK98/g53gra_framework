@@ -21,6 +21,15 @@ void Room::Display() {
 	glRotatef(rotation[0], 1.f, 0.f, 0.f); //x
 	glRotatef(rotation[1], 0.f, 1.f, 0.f); //y
 	glRotatef(rotation[2], 0.f, 0.f, 1.f); //z
+	if(wallTex == 0)
+	{
+		wallTex = Scene::GetTexture("Textures/wall - smaller.bmp");
+	}
+	if(floorTex ==0)
+	{
+		floorTex = Scene::GetTexture("Textures/floor.bmp");
+	}
+
 	makeFloorNCeiling();
 	makeWalls();
 	pillarWidth = 0.15f * width;
@@ -53,6 +62,14 @@ void Room::Display() {
 	wardrobe = new Wardrobe(width * 0.25f, height * 0.75f, width *0.25f);
 	wardrobe->Display();
 	glPopMatrix();
+	
+	glPushMatrix();
+	glTranslatef(0.f, 0.f, -length * 0.5f);
+	glRotatef(90, 0.f, 1.f, 0.f);
+	Drawer *drawer = new Drawer(width * 0.30f);
+	drawer->Display();
+	glPopMatrix();
+
 }
 
 
@@ -60,7 +77,7 @@ void Room::Display() {
 *Constructs walls with GL_QUADS
 */
 void Room::makeWalls() {
-	wallTex = Scene::GetTexture("Textures/wall - smaller.bmp");
+	
 	
 	doorWidth = width * 0.25f;
 	doorHeight = height * 0.80f;
@@ -119,7 +136,6 @@ void Room::makeWalls() {
 */
 void Room::makeFloorNCeiling() 
 {
-	floorTex = Scene::GetTexture("Textures/floor.bmp"); 
 	
 	
 	//floor
